@@ -7,7 +7,7 @@ const PORT = 3000;
 
 app.get('/', async (req, res) => {
     try {
-      const result = await db.query('SELECT * FROM "Products"');
+      const result = await db.query('SELECT * FROM products');
       res.json(result.rows);
     } catch (err) {
       console.error(err);

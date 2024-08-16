@@ -1,16 +1,25 @@
+import Home from './pages/home.js';
+import SignIn  from './pages/sign-in.js';
+import Cart from './pages/cart.js';
+import Root from './pages/root.js';
+
+import React from 'react';
+
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route} from 'react-router-dom';
 
 
+const router = createBrowserRouter( createRoutesFromElements(
+  <Route path='/' element={ <Root/> }>
+    <Route path='home' element={ <Home/> } />
+    <Route path='sign-in' element={ <SignIn/> } />
+    <Route path='cart' element={ <Cart/> } />
+  </Route>
+  
+));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header w-full h-full bg-black">
-        
-        <p style={{color: "white"}}>
-          Edit and save to reload.
-        </p>
-      </header>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
