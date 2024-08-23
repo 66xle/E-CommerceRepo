@@ -6,7 +6,7 @@ import React from "react";
 export default function Navbar()
 {
     return (
-        <div className="w-full h-14 flex flex-row text-white bg-cyan-600">
+        <div className="w-full h-14 flex flex-row text-white bg-[#1D2D44]">
             <p className="mt-3 ml-10" >Games Logo</p>
             <ul className="mt-3 ml-auto flex flex-row gap-2">
                 <a href="/home" className="hover:underline">Home</a>

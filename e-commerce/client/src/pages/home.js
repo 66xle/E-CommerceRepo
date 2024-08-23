@@ -1,10 +1,12 @@
 import React from 'react';
-
+import Slideshow from '../components/Slideshow';
+import DisplayItems from '../components/DisplayItems';
 
 function Home() {
     return (
         <div>
-            <p>home</p>
+            <Slideshow/>
+            <DisplayItems/>
         </div>
     )
 }
