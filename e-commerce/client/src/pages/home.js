@@ -1,6 +1,6 @@
 import React from 'react';
-import Slideshow from '../components/Slideshow';
-import DisplayItems from '../components/DisplayItems';
+import Slideshow from '../components/Home/Slideshow';
+import DisplayItems from '../components/Home/DisplayItems';
 
 function Home() {
     return (
