@@ -13,8 +13,8 @@ export default function DisplayItems()
     const items = [item, item, item, item, item]
 
     return (
-        <div className="flex flex-col items-center">
-            <h1 className="text-center text-3xl m-10" >Test</h1>
+        <div className="flex flex-col items-center bg-[#3E5C76]">
+            <h1 className="text-center text-[#F0EBD8] text-3xl m-10" >Games</h1>
 
             <div className="flex flex-wrap justify-center gap-[100px] w-full h-full">
                 {
