@@ -9,7 +9,7 @@ function SignIn() {
                 <input className='p-3 w-[60%] h-[10%] text-xl rounded' type="text" placeholder='Username' required/>
                 <input className='p-3 w-[60%] h-[10%] text-xl rounded' type="password" placeholder='Password' required/>
                 <button className="p-3 ring-4 rounded text-[#F0EBD8] text-4xl bg-[#1D2D44]">Log In</button>
-                <a className="text-xl text-[#F0EBD8]">Create account</a>
+                <a href="./create-account" className="text-xl text-[#F0EBD8]">Create account</a>
             </div>
         </div>
     )
