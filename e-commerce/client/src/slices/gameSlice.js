@@ -7,10 +7,10 @@ import { createAsyncThunk, createSlice, current  } from '@reduxjs/toolkit';
 
 export const loadGameDatabase = createAsyncThunk(
     'game/loadGameDatabase',
-    async ({ rejectWithValue }) => {
-        console.log("test");
+    async (value, { rejectWithValue }) => {
         try {
-            console.log("test");
+            const response = await fetch("http://localhost:2000/game");
+            console.log(response);
 
         } catch (err) {
             console.log("test");

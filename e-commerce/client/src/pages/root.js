@@ -13,8 +13,9 @@ function Root() {
 
     if (!hasLoadedGame) {
         dispatch(loadGameDatabase());
+        console.log("load");
     }
-    
+
     return (
         <div>
             <Navbar/>
