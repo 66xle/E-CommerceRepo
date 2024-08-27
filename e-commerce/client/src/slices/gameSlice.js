@@ -10,10 +10,9 @@ export const loadGameDatabase = createAsyncThunk(
     async (value, { rejectWithValue }) => {
         try {
             const response = await fetch("http://localhost:2000/game");
-            console.log(response);
-
+            const json = await response.json();
+            return json.rows;
         } catch (err) {
-            console.log("test");
             console.log(err);
             return rejectWithValue(err.message);
         }
@@ -40,10 +39,9 @@ const gameSlice = createSlice({
                 state.isLoadingGames = false;
                 state.failedToLoadGames = false;
                 state.hasLoaded = true;
-                state.gameList = []
-                const data = action.payload;
+                state.gameList = action.payload;
 
-                
+                console.log(current(state));
             })
             .addCase(loadGameDatabase.rejected, (state) => {
                 console.log("Failed to load");
