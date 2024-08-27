@@ -1,5 +1,5 @@
 
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, current  } from '@reduxjs/toolkit';
 
 
 // get data
@@ -26,6 +26,7 @@ const gameSlice = createSlice({
     initialState: {
         gameList: [],
         isLoadingGames: false,
+        hasLoaded: false,
         failedToLoadGames: false,
     },
     extraReducers: (builder) => {
@@ -38,6 +39,7 @@ const gameSlice = createSlice({
             .addCase(loadGameDatabase.fulfilled, (state, action) => {
                 state.isLoadingGames = false;
                 state.failedToLoadGames = false;
+                state.hasLoaded = true;
                 state.gameList = []
                 const data = action.payload;
 
@@ -46,13 +48,15 @@ const gameSlice = createSlice({
             .addCase(loadGameDatabase.rejected, (state) => {
                 console.log("Failed to load");
                 state.isLoadingGames = false;
-                state.failedToLoadGames = true;
+                state.failedToLoadGames = true;    
+                state.hasLoaded = false;            
                 state.gameList = [];
             })
     }
 })
 
 export const isLoading = (state) => state.game.isLoadingGames;
+export const hasLoaded = (state) => state.game.hasLoaded;
 export const failedToLoad = (state) => state.game.failedToLoadGames;
 
 
