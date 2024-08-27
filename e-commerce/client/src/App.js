@@ -4,9 +4,11 @@ import Cart from './pages/cart.js';
 import Root from './pages/root.js';
 import CreateAccount from './pages/create-account.js'
 
+
 import React from 'react';
 
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route} from 'react-router-dom';
+
 
 
 const router = createBrowserRouter( createRoutesFromElements(
@@ -17,6 +19,8 @@ const router = createBrowserRouter( createRoutesFromElements(
     <Route path='create-account' element={ <CreateAccount/> } />
   </Route>
 ));
+
+
 
 function App() {
   return (
