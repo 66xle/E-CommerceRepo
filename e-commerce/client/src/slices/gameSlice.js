@@ -53,6 +53,8 @@ const gameSlice = createSlice({
     }
 })
 
+export const selectGame = (state) => state.game.gameList;
+
 export const isLoading = (state) => state.game.isLoadingGames;
 export const hasLoaded = (state) => state.game.hasLoaded;
 export const failedToLoad = (state) => state.game.failedToLoadGames;
