@@ -9,10 +9,6 @@ import Item from "./Item";
 
 export default function DisplayItems()
 {
-    const { id } = useParams()
-
-    console.log(id);
-
     const games = useSelector(selectGame);
 
     return (
