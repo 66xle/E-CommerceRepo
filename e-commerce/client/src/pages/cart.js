@@ -1,8 +1,13 @@
 import React from 'react';
 
+
 import DisplayCart from '../components/Cart/DisplayCart';
 
-export default function CreateAccount() {
+
+export default function Cart() {
+
+    
+
     return (
         <div className='flex flex-col items-center w-full h-[100%] bg-[#3E5C76]' >
             <DisplayCart/>

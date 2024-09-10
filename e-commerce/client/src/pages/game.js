@@ -1,16 +1,23 @@
 import React from 'react';
-import { useSelector } from "react-redux";
-import { selectGame } from '../slices/gameSlice';
-
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
+
+
+
+import { selectGame } from '../slices/gameSlice';
+import { addItem } from '../slices/cartSlice';
 
 export default function GameItem() {
 
+    const dispatch = useDispatch();
     const { id } = useParams();
-
     const games = useSelector(selectGame);
 
     const selectedItem = games[id - 1];
+
+    const handleAddCartItem = () => {
+        dispatch(addItem(selectedItem));
+    }
 
     return (
         <div className='flex justify-center p-10 w-full h-[100vh] bg-[#3E5C76]' >
@@ -20,7 +27,7 @@ export default function GameItem() {
                     <h1 className="text-3xl font-bold">{selectedItem.name}</h1>
                     <p className="" >{selectedItem.description}</p>
                     <p className="text-2xl" >Cost: $100</p>
-                    <button className="p-3 ring-4 rounded text-[#F0EBD8] text-2xl bg-[#1D2D44]">Add to Cart</button>
+                    <button className="p-3 ring-4 rounded text-[#F0EBD8] text-2xl bg-[#1D2D44]" onClick={handleAddCartItem}>Add to Cart</button>
                 </div>
                 
             </div>

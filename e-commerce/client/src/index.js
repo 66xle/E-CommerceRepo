@@ -10,6 +10,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import sessionStorage from 'redux-persist/es/storage/session';
 
 import gameReducer from './slices/gameSlice';
+import cartReducer from './slices/cartSlice';
 import './index.css';
 
 const persistConfig = {
@@ -19,6 +20,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   game: gameReducer,
+  cart: cartReducer,
 });
 
 const store = configureStore({
