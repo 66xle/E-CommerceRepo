@@ -19,7 +19,7 @@ export default function CartItem({item, setRefresh})
             <img className="object-cover w-20 h-20" src={item.image} />
             <h1 className="rounded bg-[#748CAB] ">{item.name}</h1>
             <div className="grow" ></div>
-            <p>Price</p>
+            <p>${item.price}</p>
             <button className="pr-3" onClick={handleRemoveCartItem} >X</button>
         </div>
     )

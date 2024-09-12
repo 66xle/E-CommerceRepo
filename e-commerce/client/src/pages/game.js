@@ -26,7 +26,7 @@ export default function GameItem() {
                 <div className='flex flex-col gap-10 p-10 max-w-[30%] text-[#F0EBD8]'>
                     <h1 className="text-3xl font-bold">{selectedItem.name}</h1>
                     <p className="" >{selectedItem.description}</p>
-                    <p className="text-2xl" >Cost: $100</p>
+                    <p className="text-2xl" >Cost: ${selectedItem.price}</p>
                     <button className="p-3 ring-4 rounded text-[#F0EBD8] text-2xl bg-[#1D2D44]" onClick={handleAddCartItem}>Add to Cart</button>
                 </div>
                 
