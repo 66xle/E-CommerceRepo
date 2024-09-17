@@ -8,6 +8,8 @@ const PORT = 2000;
 
 app.use(cors());
 
+
+
 app.get('/game', async (req, res) => {
     try {
       const result = await db.query('SELECT * FROM "products" ORDER BY id');

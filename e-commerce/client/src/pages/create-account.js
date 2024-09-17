@@ -11,6 +11,7 @@ export default function CreateAccount() {
                 <input className='p-3 w-[60%] h-[10%] text-xl rounded' type="password" placeholder='Verify Password' required/>
                 <button className="p-3 ring-4 rounded text-[#F0EBD8] text-3xl bg-[#1D2D44]">Create Account</button>
                 <a href="./sign-in" className="text-xl text-[#F0EBD8]">Log in</a>
+                {/* <p className="absolute mt-[400px]">Password does not match</p> */}
             </div>
         </div>
     )
