@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-async function Register({username, password, verifyPassword}) {
+async function Register(username, password, verifyPassword) {
     try {
         const response = await fetch("http://localhost:2000/register", {
             method: 'POST',
