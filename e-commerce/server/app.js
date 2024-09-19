@@ -62,13 +62,13 @@ app.post('/register', async (req, res) => {
     
 
     // Hash password
-    const salt = await bcrypt.genSalt(10);
+    // const salt = await bcrypt.genSalt(10);
+    // bcrypt.hash(password, salt, function(err, hash) {
+    //   db.query(`INSERT INTO "accounts" (id, username, password) VALUES ('${id}', '${username}', '${hash}')`);
+    // });
 
-    bcrypt.hash(password, salt, function(err, hash) {
-      db.query(`INSERT INTO "accounts" (id, username, password) VALUES ('${id}', '${username}', '${hash}')`);
-    });
-
-    res.json({success: true, message: "Created User!"});
+    res.redirect("./sign-in");
+    //res.json({success: true, message: "Created User!"});
 
   } catch (err) {
     res.status(500).json({ message: err.message });

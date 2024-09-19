@@ -13,6 +13,11 @@ async function Register(username, password, verifyPassword) {
                 verifyPassword: verifyPassword
             })
         });
+
+        if (response.redirected) {
+            window.location.href= "./sign-in";
+        }
+
         const json = await response.json();
         console.log(json);
     } catch (err) {
