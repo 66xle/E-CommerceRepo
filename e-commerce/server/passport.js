@@ -1,20 +1,45 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
-
+const db = require("./db");
 
 passport.use(new LocalStrategy(
-    function verify(username, password, done) {
-        db.get('', [username], function(err, user) {
-            if (err) return done(err);
+    async function verify(username, password, done) {
 
-            if (!user) return done(null, false);
+        const userObj = await db.query(`(SELECT * FROM "accounts" WHERE username = '${username}')`);
+        const userCount = userObj.rows[0].count;
+        const user = {
+            id: userObj.rows[0].id,
+            password: userObj.rows[0].password
+        }
 
-            const matchedPassword = bcrypt.compare(password, user.password);
+        if (userCount == 0) return done(null, false, { success: false, message: 'Incorrect username.'});
 
-            if (user.password != matchedPassword) return done(null, false);
+        console.log("Found user");
 
-            return done(null, user);
-        })
+        const matchedPassword = await bcrypt.compare(password, user.password);
+
+        console.log(matchedPassword);
+
+        if (!matchedPassword) return done(null, false, { success: false, message: 'Incorrect password.' });
+        
+        console.log("Password match");
+
+        return done(null, user, { success: true, message: 'Successful login.' });
     }
   ))
+
+
+  passport.serializeUser((err, user, done) => {
+    if (err) return done(err);
+
+    done(null, user.id);
+  });
+  
+  passport.deserializeUser((id, done) => {
+    db.users.findById(id, function(err, user) {
+        if (err) return done(err);
+    
+        return done(null, user);
+      })
+  })

@@ -11,6 +11,8 @@ const PORT = 2000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname + "/public"));
+app.use(express.urlencoded({extended: true}));
 
 require('./passport');
 
@@ -26,7 +28,6 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 
 app.get('/game', async (req, res) => {
@@ -62,18 +63,23 @@ app.post('/register', async (req, res) => {
     
 
     // Hash password
-    // const salt = await bcrypt.genSalt(10);
-    // bcrypt.hash(password, salt, function(err, hash) {
-    //   db.query(`INSERT INTO "accounts" (id, username, password) VALUES ('${id}', '${username}', '${hash}')`);
-    // });
+    const salt = await bcrypt.genSalt(10);
+    bcrypt.hash(password, salt, function(err, hash) {
+      db.query(`INSERT INTO "accounts" (id, username, password) VALUES ('${id}', '${username}', '${hash}')`);
+    });
 
     res.redirect("./sign-in");
-    //res.json({success: true, message: "Created User!"});
 
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
+
+
+app.post ("/login", passport.authenticate('local', {
+  successRedirect: "./home",
+  failureRedirect: "./sign-in",
+}))
 
 
 app.listen(PORT, () => {
