@@ -1,7 +1,10 @@
 const express = require('express');
 const session = require('express-session');
 const flash = require('express-flash');
+
 const cors = require('cors');
+
+
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 
@@ -11,6 +14,10 @@ const app = express();
 const PORT = 2000;
 
 app.use(cors());
+require("./enable-cors.js")(app);
+
+
+app.use(flash());
 app.use(express.json());
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({extended: true}));
