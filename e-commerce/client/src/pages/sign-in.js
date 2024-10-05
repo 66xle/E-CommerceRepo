@@ -13,12 +13,14 @@ async function Login(username, password) {
             })
         });
 
-        if (response.redirected) {
-            window.location.href= "./sign-in";
-        }
+        console.log(response);
 
-        const json = await response.json();
-        console.log(json);
+        // if (response.redirected) {
+        //     window.location.href= "./sign-in";
+        // }
+
+        // const json = await response.json();
+        // console.log(json);
     } catch (err) {
         console.log(err);
     }
