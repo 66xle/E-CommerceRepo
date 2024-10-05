@@ -11,6 +11,7 @@ import sessionStorage from 'redux-persist/es/storage/session';
 
 import gameReducer from './slices/gameSlice';
 import cartReducer from './slices/cartSlice';
+import userSlice from './slices/userSlice';
 import './index.css';
 
 const persistConfig = {
@@ -21,6 +22,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   game: gameReducer,
   cart: cartReducer,
+  user: userSlice,
 });
 
 const store = configureStore({

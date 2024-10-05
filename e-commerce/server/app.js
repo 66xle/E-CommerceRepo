@@ -75,7 +75,7 @@ app.post('/register', async (req, res) => {
       db.query(`INSERT INTO "accounts" (id, username, password) VALUES ('${id}', '${username}', '${hash}')`);
     });
 
-    res.redirect("./sign-in");
+    res.json({success: true, message: "./sign-in"});
 
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -83,10 +83,23 @@ app.post('/register', async (req, res) => {
 });
 
 
-app.post ("/login", passport.authenticate('local', {
-  successRedirect: "./home",
-  failureRedirect: "./sign-in"
-}))
+app.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+
+    if (err) { return next(err); }
+
+    // Redirect if it fails
+    if (!info.success) { return res.json(info); }
+
+    req.logIn(user, function(err) {
+
+      if (err) { return next(err); }
+
+      // Redirect if it succeeds
+      return res.json(info);
+    });
+  })(req, res, next);
+});
 
 
 app.listen(PORT, () => {

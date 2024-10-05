@@ -14,12 +14,15 @@ async function Register(username, password, verifyPassword) {
             })
         });
 
-        if (response.redirected) {
-            window.location.href= "./sign-in";
-        }
+        console.log(response);
 
         const json = await response.json();
         console.log(json);
+
+        if (json.success) {
+            window.location.href= "./sign-in";
+        }
+        
     } catch (err) {
         console.log(err);
     }

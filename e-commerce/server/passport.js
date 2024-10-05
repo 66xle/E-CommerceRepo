@@ -27,34 +27,16 @@ passport.use(new LocalStrategy(
         
         console.log("Password match");
 
-        return done(null, user);
+        return done(null, user, { success: true, message: 'Success' });
     }
   ))
 
-
-  // passport.serializeUser((err, user, done) => {
-  //   console.log("serialize");
-  //   if (err) return done(err);
-
-  //   console.log("check");
-
-  //   return done(null, user.id);
-  // });
-
   passport.serializeUser(function(user, done) {
+    console.log("serialize")
     done(null, user.id);
   });
   
-  // passport.deserializeUser((id, done) => {
-  //   console.log("deserialize");
-  //   db.users.findById(id, function(err, user) {
-  //       if (err) return done(err);
-    
-  //       return done(null, user);
-  //     })
-  // })
-
   passport.deserializeUser(function(user, done) {
     console.log("deserialize")
-      return done(null, user);
+    return done(null, user);
   });
