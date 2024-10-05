@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+const flash = require('express-flash');
 const cors = require('cors');
 const passport = require('passport');
 const bcrypt = require('bcrypt');
@@ -18,7 +19,6 @@ require('./passport');
 
 app.use(session({
   secret: "string",
-  cookie: {maxAge: 10},
   saveUninitialized: false,
   resave: false,
   sameSite: 'none',
